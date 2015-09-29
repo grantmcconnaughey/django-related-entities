@@ -5,16 +5,16 @@ from django.db.models import Q
 
 class RelatedEntityManager(models.Manager):
 
-    def by_primary_entity(self, entity):
+    def by_primary(self, entity):
         content_type = ContentType.objects.get_for_model(entity)
         return self.filter(primary_content_type=content_type,
                            primary_object_id=entity.pk)
 
-    def by_primary_entity_and_type(self, entity, content_type):
+    def by_primary_and_type(self, entity, content_type):
         return self.filter(primary_content_type=content_type,
                            primary_object_id=entity.pk)
 
-    def by_related_entity(self, entity):
+    def by_related(self, entity):
         content_type = ContentType.objects.get_for_model(entity)
         return self.filter(Q(primary_content_type=content_type,
                              primary_object_id=entity.pk) |

@@ -2,11 +2,11 @@ from django.db import models
 from relatedentities.models import RelatedEntityMixin
 
 
-class Cat(models.Model, RelatedEntityMixin):
+class Cat(RelatedEntityMixin, models.Model):
 
     name = models.CharField(max_length=255)
 
 
-class Dog(models.Model, RelatedEntityMixin):
+class Dog(RelatedEntityMixin, models.Model):
 
     name = models.CharField(max_length=255)

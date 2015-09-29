@@ -22,14 +22,23 @@ Install django-related-entities::
 
     pip install django-related-entities
 
-Then use it in a project::
+Add the 'relatedentities' package to your INSTALLED_APPS::
 
-    import relatedentities
+    INSTALLED_APPS = (
+        # ...
+        'relatedentities',
+        # ...
+    )
+
+Be sure to run migrations::
+
+    python manage.py migrate
 
 Features
 --------
 
-* TODO
+* Easily create generic relationships between any two models in your database.
+* Handy when used for authorization.
 
 Cookiecutter Tools Used in Making This Package
 ----------------------------------------------

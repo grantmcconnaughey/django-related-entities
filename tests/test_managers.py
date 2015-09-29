@@ -13,7 +13,7 @@ class RelatedEntityManagerTests(TestCase):
     def test_by_primary_entity_returns_related_models(self):
         add_related(self.cat, self.dog)
 
-        entities = RelatedEntity.objects.by_primary_entity(self.cat)
+        entities = RelatedEntity.objects.by_primary(self.cat)
 
         self.assertEqual(len(entities), 1)
         self.assertEqual(entities.first().primary_object, self.cat)

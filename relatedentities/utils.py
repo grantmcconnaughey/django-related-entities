@@ -3,8 +3,8 @@ from django.contrib.contenttypes.models import ContentType
 from .models import RelatedEntity
 
 
-def add_related(primary_entity, related_entity):
-    """Adds related entity relationship if it does not exist"""
+def add_related(primary_entity, related_entity, role=''):
+    """Adds a related entity relationship if it does not exist."""
 
     primary_content_type = ContentType.objects.get_for_model(primary_entity)
     content_type = ContentType.objects.get_for_model(related_entity)
@@ -18,6 +18,7 @@ def add_related(primary_entity, related_entity):
         return related_entity
     except RelatedEntity.DoesNotExist:
         related_entity = RelatedEntity(related_object=related_entity,
-                                       primary_object=primary_entity)
+                                       primary_object=primary_entity,
+                                       role=role)
         related_entity.save()
         return related_entity
